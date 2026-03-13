@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-
+import './style/App.css'
+import NavBar from './components/NavBar'
+import { Routes,Route } from 'react-router-dom'
 function App() {
-
   return (
     <>
-    <h1>To do app</h1>
+    <NavBar />
+     <Routes>
+        <Route path ='/' element={<h1>Task List</h1>}></Route>
+        <Route path ='/add' element={<h1>Add Task</h1>}></Route>
+     </Routes>
     </>
   )
 }
