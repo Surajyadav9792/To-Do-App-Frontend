@@ -1,19 +1,73 @@
+import { useState } from "react";
 import "../style/AddTask.css";
+
 export default function AddTask(){
- return(
-    <div className="container">
-        <h1>Add New Task</h1>
 
-        <form>
-            <label>Title</label>
-            <input type="text" name="title" placeholder="Enter task title"/>
+    const [taskData,setTaskData] = useState({});
 
-            <label>Description</label>
-            <textarea name="description" placeholder="Enter Task Description"></textarea>
+    const HandleAddTask = async () => {
 
-            <button>Add Task</button>
-        </form>
+        let result = await fetch(
+            "http://localhost:3200/todo/addTask",
+            {
+                method: "POST",
+                body: JSON.stringify(taskData),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        );
 
-    </div>
- )
+        result = await result.json();
+
+        if (result) {
+            console.log("new task added");
+        }
+    };
+
+    return(
+        <div className="addTaskContainer">
+
+            <h1 className="addTaskTitle">
+                Add New Task
+            </h1>
+
+            <div className="formGroup">
+                <label>Title</label>
+
+                <input
+                    type="text"
+                    placeholder="Enter task title"
+                    onChange={(e)=>
+                        setTaskData({
+                            ...taskData,
+                            title:e.target.value
+                        })
+                    }
+                />
+            </div>
+
+            <div className="formGroup">
+                <label>Description</label>
+
+                <textarea
+                    placeholder="Enter task description"
+                    onChange={(e)=>
+                        setTaskData({
+                            ...taskData,
+                            description:e.target.value
+                        })
+                    }
+                />
+            </div>
+
+            <button
+                className="addBtn"
+                onClick={HandleAddTask}
+            >
+                Add Task
+            </button>
+
+        </div>
+    )
 }
