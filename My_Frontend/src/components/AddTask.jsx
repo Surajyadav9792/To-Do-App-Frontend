@@ -1,3 +1,4 @@
+import "../style/AddTask.css";
 export default function AddTask(){
  return(
     <div className="container">
