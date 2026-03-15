@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "../style/List.css";
+import {Link} from "react-router-dom"
 
 export default function List() {
 
@@ -50,7 +51,8 @@ export default function List() {
                         <th>S.No</th>
                         <th>Title</th>
                         <th>Description</th>
-                         <th>Action</th>
+                        <th>Action</th>
+                        <th>Reset</th>
                     </tr>
                 </thead>
 
@@ -64,13 +66,13 @@ export default function List() {
                                 <td>{item.title}</td>
                                 <td>{item.description}</td>
                                 <td><button onClick={()=>deleteTask(item._id)}>Delete</button></td>
+                                <Link to={"update/"+item._id}>Update</Link>
                             </tr>
 
                         ))
                     }
 
                 </tbody>
-
             </table>
 
         </div>
