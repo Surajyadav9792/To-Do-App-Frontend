@@ -21,6 +21,20 @@ export default function List() {
 
     };
 
+   const deleteTask = async(id) => {
+        let item = await fetch(
+            `http://localhost:3200/todo/delete/${id}`,
+        {
+            method: "DELETE"
+        }
+    );
+       item = await item.json(); 
+        if(item.success){
+            console.log("item deleted");
+             getListData();//by this the present data is comes in ui
+        }
+    }; 
+
     return (
 
         <div className="listContainer">
@@ -36,6 +50,7 @@ export default function List() {
                         <th>S.No</th>
                         <th>Title</th>
                         <th>Description</th>
+                         <th>Action</th>
                     </tr>
                 </thead>
 
@@ -45,11 +60,10 @@ export default function List() {
                         taskData.map((item, index) => (
 
                             <tr key={item._id}>
-
                                 <td>{index + 1}</td>
                                 <td>{item.title}</td>
                                 <td>{item.description}</td>
-
+                                <td><button onClick={()=>deleteTask(item._id)}>Delete</button></td>
                             </tr>
 
                         ))
