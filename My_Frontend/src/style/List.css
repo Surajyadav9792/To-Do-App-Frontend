@@ -1,0 +1,27 @@
+.listContainer {
+    width: 90%;
+    margin: 40px auto;
+}
+
+.listTitle {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.todoTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.todoTable th {
+    background: #dcdcdc;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.todoTable td {
+    background: #eaeaea;
+    padding: 10px;
+}

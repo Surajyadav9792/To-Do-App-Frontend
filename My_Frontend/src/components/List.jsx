@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import "../style/List.css";
 
 export default function List() {
 
