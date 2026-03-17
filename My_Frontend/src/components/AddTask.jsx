@@ -6,7 +6,6 @@ export default function AddTask(){
     const [taskData,setTaskData] = useState({});
     const navigate=useNavigate();
     const HandleAddTask = async () => {
-
         let result = await fetch(
             "http://localhost:3200/todo/addTask",
             {

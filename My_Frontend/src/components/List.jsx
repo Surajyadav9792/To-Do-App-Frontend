@@ -13,10 +13,10 @@ export default function List() {
     const getListData = async () => {
 
         let list = await fetch(
-            "http://localhost:3200/todo/tasks"
-        );
-
-        list = await list.json();
+            "http://localhost:3200/todo/tasks",{
+                credentials:'include'
+            });
+         list = await list.json();
 
         setTaskData(list);
 
