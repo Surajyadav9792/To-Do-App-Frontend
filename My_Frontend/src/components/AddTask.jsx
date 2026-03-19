@@ -7,7 +7,9 @@ export default function AddTask(){
     const navigate=useNavigate();
     const HandleAddTask = async () => {
         let result = await fetch(
-            "http://localhost:3200/todo/addTask",
+            "http://localhost:3200/todo/addTask",{
+                credentials:'include'
+              },
             {
                 method: "POST",
                 body: JSON.stringify(taskData),
@@ -16,11 +18,9 @@ export default function AddTask(){
                 },
             }
         );
-
         result = await result.json();
-
         if (result) {
-            navigate("/");
+            navigate("/list");
             console.log("new task added");
         }
     };

@@ -1,13 +1,15 @@
 import { useState } from "react";
 import "../style/AddTask.css";
-import {Link} from "react-router-dom"
+import {Link,useNavigate} from "react-router-dom"
 export default function Login(){
+        const navigate=useNavigate();
         const [userData,setUserData]=useState();
         const HandleLogin=async()=>{
      let result = await fetch(
             "http://localhost:3200/user/login",
             {
                 method: "POST",
+                credentials: "include",
                 body: JSON.stringify(userData),
                 headers: {
                     "Content-Type": "application/json",
@@ -15,8 +17,11 @@ export default function Login(){
             }
         );
         result = await result.json();
-         console.log(result);
-  }
+         if (result) {
+            navigate("/list");
+            console.log("login successfully");
+        }
+  };
     return(
         <div className="addTaskContainer">
             <h1 className="addTaskTitle">Login</h1>
@@ -33,8 +38,9 @@ export default function Login(){
             <button className="addBtn" onClick={HandleLogin}>Login</button>
             <br></br>
             <br></br>
-              <span>Go to</span>
-            <Link to="/signup">Sign up</Link> 
+               <span> Don't have an account?{' '}
+             <Link to="/">Sign up</Link> 
+               </span>
            </div>
     )
 }

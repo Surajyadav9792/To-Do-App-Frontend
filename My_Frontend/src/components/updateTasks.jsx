@@ -3,7 +3,6 @@ import "../style/AddTask.css";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function UpdateTask(){
-
     const [taskData,setTaskData] = useState({
         title:"",
         description:""
@@ -18,23 +17,23 @@ export default function UpdateTask(){
 
 
     const gettask = async(id)=>{
-
         let task = await fetch(
-            `http://localhost:3200/todo/tasks/` + id
-        );
-
+             `http://localhost:3200/todo/tasks/${id}`,{
+                credentials: "include",
+             }
+        ); 
         task = await task.json();
-
+        console.log(task);
         setTaskData(task);
     }
 
 
     const updateTask = async () => {
-
         let res = await fetch(
-            `http://localhost:3200/todo/update/` + id,
+            `http://localhost:3200/todo/update/${id}`,
             {
                 method:"PUT",
+                credentials: "include",
                 headers:{
                     "Content-Type":"application/json"
                 },
@@ -43,15 +42,12 @@ export default function UpdateTask(){
         );
 
         let data = await res.json();
-
         if(data.success){
             console.log("updated");
-            navigate("/");   // sir usually ye karte hain
+            navigate("/list");   
         }
 
     }
-
-
 return(
     <div className="addTaskContainer">
 
@@ -90,10 +86,7 @@ return(
 
                 onChange={(e)=>setTaskData({...taskData, description:e.target.value}) }
                />
-
-        </div>
-  
-
+        </div>   
         <button
             className="addBtn"
             onClick={updateTask}

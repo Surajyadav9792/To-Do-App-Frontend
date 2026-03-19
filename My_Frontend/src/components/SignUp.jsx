@@ -6,8 +6,9 @@ export default function SignUp(){
   const HandleSignUp=async()=>{
     let result = await fetch(
             "http://localhost:3200/user/signup",
-            {
-                method: "POST",
+             {
+                method: "POST",  
+                credentials: "include",
                 body: JSON.stringify(userData),
                 headers: {
                     "Content-Type": "application/json",
@@ -38,8 +39,9 @@ export default function SignUp(){
             <button className="addBtn" onClick={HandleSignUp}>Sign Up</button>
             <br></br>
             <br></br>
-            <span>Already have a account</span>
+            <span>Already have a account {'  '}
              <Link to="/login">Login</Link>
+             </span>
            </div>
     )
 }
