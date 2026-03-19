@@ -28,7 +28,7 @@ export default function Login(){
            <div className="formGroup">
                 <label>Email</label>
                 <input onChange={(event)=>setUserData({...userData,emailId:event.target.value})}
-                type="email" placeholder="Enter user email"/>
+                 type="email" placeholder="Enter user email"/>
                 <br></br>
                 <br></br>
                   <label>Password</label>

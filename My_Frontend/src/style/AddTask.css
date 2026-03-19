@@ -1,55 +1,82 @@
-/* AddTask.css */
-
+/* Container for the whole page */
 .addTaskContainer {
-    width: 420px;
+    max-width: 500px;
     margin: 50px auto;
-    padding: 30px;
-    border-radius: 10px;
-    background: #f5f5f5;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
+/* Title Styling */
 .addTaskTitle {
+    margin-bottom: 1.5rem;
+    color: #1a202c;
+    font-size: 1.75rem;
+    font-weight: 700;
     text-align: center;
-    margin-bottom: 20px;
 }
 
+/* Grouping labels and inputs */
 .formGroup {
+    margin-bottom: 1.25rem;
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px;
 }
 
+/* Label styling */
 .formGroup label {
-    margin-bottom: 5px;
+    margin-bottom: 0.5rem;
     font-weight: 600;
+    font-size: 0.9rem;
+    color: #4a5568;
 }
 
+/* Input and Textarea styling */
 .formGroup input,
 .formGroup textarea {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #999;
-    font-size: 14px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    background-color: #f8fafc;
 }
 
 .formGroup textarea {
-    min-height: 100px;
+    min-height: 120px;
     resize: vertical;
 }
 
+/* Focus states */
+.formGroup input:focus,
+.formGroup textarea:focus {
+    border-color: #3182ce;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+}
+
+/* Button styling */
 .addBtn {
     width: 100%;
-    padding: 12px;
-    border: none;
-    background-color: #0077ff;
+    padding: 0.8rem;
+    background-color: #3182ce;
     color: white;
-    font-size: 16px;
-    border-radius: 6px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    margin-top: 10px;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
 }
 
 .addBtn:hover {
-    background-color: #005edb;
+    background-color: #2b6cb0;
+}
+
+.addBtn:active {
+    transform: translateY(1px);
 }

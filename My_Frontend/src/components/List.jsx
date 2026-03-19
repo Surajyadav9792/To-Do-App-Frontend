@@ -13,8 +13,8 @@ export default function List() {
         let list = await fetch(
             "http://localhost:3200/todo/tasks",{
                 credentials:'include'
-            });
-         if (list.status === 401) {
+              });
+         if(list.status === 401) {
          navigate("/login");
         return;
     }
